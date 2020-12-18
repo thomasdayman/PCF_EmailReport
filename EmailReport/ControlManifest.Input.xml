@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="daymandynamics" constructor="EmailReport" version="1.0.0" display-name-key="Email Report" description-key="Use this control to send email with a SSRS report attached. Please visit - https://www.daymandynamics.com/pcf-email-report/ for more information." control-type="standard" preview-image="img/preview.png">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="subject" display-name-key="Subject" description-key="This determines what is populated in the subject field when the email record is created." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="description" display-name-key="Description" description-key="This determines what is populated in the description field when the email record is created." of-type="Multiple" usage="input" required="false" />
+    <property name="reportName" display-name-key="Report Name" description-key="This is the name of the report you will be executing. Example - (MainReport.rdl)." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="reportGuid" display-name-key="Report GUID" description-key="This is this GUID of the report you will be executing. You can find this GUID in the URL when searching for your report using advanced find." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="attachmentFileName" display-name-key="Attachment File Name" description-key="This determines what the attachment file name will be when the email is created." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="automaticallySendReport" display-name-key="Automatically Send Report" description-key="This determines if the email will be automatically sent or not." of-type="Enum" usage="input" required="true" default-value="false">
+      <value name="true" display-name-key="true" description-key="true">true</value>
+      <value name="false" display-name-key="false" description-key="false">false</value>
+    </property>
+    <property name="FromEntityType" display-name-key="From Entity Type" description-key="The logical entity name of the from record. You can select from the entities below." of-type="Enum" usage="input" required="false" default-value="systemuser">
+      <value name="systemuser" display-name-key="systemuser" description-key="systemuser">systemuser</value>
+      <value name="queue" display-name-key="queue" description-key="queue">queue</value>
+    </property>
+    <property name="From" display-name-key="From" description-key="The GUID of the record you want to set the From field in the email." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="ToEntityType" display-name-key="To Entity Type" description-key="The logical entity name of the from record. You can select from the entities below." of-type="Enum" usage="input" required="false" default-value="contact">
+      <value name="contact" display-name-key="contact" description-key="contact">contact</value>
+      <value name="account" display-name-key="account" description-key="account">account</value>
+      <value name="systemuser" display-name-key="systemuser" description-key="systemuser">systemuser</value>
+      <value name="entitlement" display-name-key="entitlement" description-key="entitlement">entitlement</value>
+      <value name="lead" display-name-key="lead" description-key="lead">lead</value>
+      <value name="queue" display-name-key="queue" description-key="queue">queue</value>
+      <value name="knowledgearticle" display-name-key="knowledgearticle" description-key="knowledgearticle">knowledgearticle</value>
+    </property>
+    <property name="To" display-name-key="To" description-key="The GUID of the record you want to set the To field in the email." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="Report_Parameter_Name" display-name-key="Report Parameter Name" description-key="This is the SSRS report parameter name that is set for enableprefiltering query." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="Report_FetchXML" display-name-key="Report FetchXML" description-key="This is where you create the FetchXML for running the report against." of-type="Multiple" usage="input" required="true" />
+    <property name="RecordId" display-name-key="Record Id" description-key="This is the GUID of the record you are running the report against. This GUID will be added to the Report FetchXML above where the {0} is added in the XML." of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="RegardingObjectId" display-name-key="Regarding Object Id" description-key="The record Id for the regarding object field." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="RegardingObjectEntityName" display-name-key="Regarding Object Entity Name" description-key="The entity logical name for the regarding object field." of-type="SingleLine.Text" usage="input" required="false" />
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/EmailReport.css" order="1" />
+      <resx path="strings/EmailReport.1033.resx" version="1.0.0" />
+    </resources>
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
