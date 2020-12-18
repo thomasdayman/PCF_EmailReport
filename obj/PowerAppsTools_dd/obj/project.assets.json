@@ -1,0 +1,143 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.2": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.4.4": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Microsoft.PowerApps.MSBuild.Solution/1.4.4": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.PowerApps.MSBuild.Solution.props": {},
+          "build/Microsoft.PowerApps.MSBuild.Solution.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.PowerApps.MSBuild.Solution.props": {},
+          "buildMultiTargeting/Microsoft.PowerApps.MSBuild.Solution.targets": {}
+        }
+      },
+      "DDEmailReport/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.2",
+        "dependencies": {
+          "Microsoft.PowerApps.MSBuild.Pcf": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DDEmailReport.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DDEmailReport.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.PowerApps.MSBuild.Pcf/1.4.4": {
+      "sha512": "BjniwZK7TnITI8CNxjZM9Mm2geTonzUxLNlpAhybGtDICKqknejvuPX9jZ4x/ASYhyi7IGqshnGIy3+2q152jA==",
+      "type": "package",
+      "path": "microsoft.powerapps.msbuild.pcf/1.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "3rdPartyNotice.txt",
+        "LICENSE.txt",
+        "build/Microsoft.PowerApps.MSBuild.Pcf.props",
+        "build/Microsoft.PowerApps.MSBuild.Pcf.targets",
+        "microsoft.powerapps.msbuild.pcf.1.4.4.nupkg.sha512",
+        "microsoft.powerapps.msbuild.pcf.nuspec"
+      ]
+    },
+    "Microsoft.PowerApps.MSBuild.Solution/1.4.4": {
+      "sha512": "gMcjTl5ZPdIy8KyEd1ZWdAZMhhuYoHJlJZ++rjt+IhZnpc40FMj4ERZGZwxy+/wjWco0iiPctnfdPcMrQfCyfw==",
+      "type": "package",
+      "path": "microsoft.powerapps.msbuild.solution/1.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "3rdPartyNotice.txt",
+        "LICENSE.txt",
+        "build/Microsoft.PowerApps.MSBuild.Solution.props",
+        "build/Microsoft.PowerApps.MSBuild.Solution.targets",
+        "buildMultiTargeting/Microsoft.PowerApps.MSBuild.Solution.props",
+        "buildMultiTargeting/Microsoft.PowerApps.MSBuild.Solution.targets",
+        "content/Microsoft.ApplicationInsights.dll",
+        "content/Microsoft.PowerApps.AppInsights.BatchedTelemetry.dll",
+        "content/Microsoft.PowerApps.AppInsights.BatchedTelemetryChannel.dll",
+        "content/SolutionPackager.exe",
+        "content/SolutionPackager.exe.config",
+        "content/SolutionPackagerLib.dll",
+        "content/System.ValueTuple.dll",
+        "content/bolt.cli.dll",
+        "content/bolt.system.dll",
+        "content/pacTelemetryTask.exe",
+        "content/pacTelemetryUpload.exe",
+        "microsoft.powerapps.msbuild.solution.1.4.4.nupkg.sha512",
+        "microsoft.powerapps.msbuild.solution.nuspec",
+        "tasks/net462/Microsoft.PowerApps.MSBuild.Tasks.dll",
+        "tasks/net462/bolt.module.solution.dll",
+        "tasks/netstandard2.0/Microsoft.PowerApps.MSBuild.Tasks.dll",
+        "tasks/netstandard2.0/bolt.module.solution.dll"
+      ]
+    },
+    "DDEmailReport/1.0.0": {
+      "type": "project",
+      "path": "../../DDEmailReport.pcfproj",
+      "msbuildProject": "../../DDEmailReport.pcfproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.2": [
+      "DDEmailReport >= 1.0.0",
+      "Microsoft.PowerApps.MSBuild.Solution >= 1.*"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Tdayman\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Tdayman\\Desktop\\DaymanDynamics\\PCF\\DDEmailReport\\obj\\PowerAppsTools_dd\\PowerAppsTools_dd.cdsproj",
+      "projectName": "PowerAppsTools_dd",
+      "projectPath": "C:\\Users\\Tdayman\\Desktop\\DaymanDynamics\\PCF\\DDEmailReport\\obj\\PowerAppsTools_dd\\PowerAppsTools_dd.cdsproj",
+      "packagesPath": "C:\\Users\\Tdayman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tdayman\\Desktop\\DaymanDynamics\\PCF\\DDEmailReport\\obj\\PowerAppsTools_dd\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Tdayman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net462"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net462": {
+          "targetAlias": "net462",
+          "projectReferences": {
+            "C:\\Users\\Tdayman\\Desktop\\DaymanDynamics\\PCF\\DDEmailReport\\DDEmailReport.pcfproj": {
+              "projectPath": "C:\\Users\\Tdayman\\Desktop\\DaymanDynamics\\PCF\\DDEmailReport\\DDEmailReport.pcfproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net462": {
+        "targetAlias": "net462",
+        "dependencies": {
+          "Microsoft.PowerApps.MSBuild.Solution": {
+            "target": "Package",
+            "version": "[1.*, )"
+          }
+        }
+      }
+    }
+  }
+}

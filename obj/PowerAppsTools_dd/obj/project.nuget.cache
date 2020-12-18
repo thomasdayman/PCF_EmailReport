@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3OLP8V2E5Fi99Sh2SP3v1U0wGMXK6441uQ5GSLxPP7opkl0PUHNcp9byIl6KCan+BlXnt9Ju2KXihsMSC9VGWQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Tdayman\\Desktop\\DaymanDynamics\\PCF\\DDEmailReport\\obj\\PowerAppsTools_dd\\PowerAppsTools_dd.cdsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tdayman\\.nuget\\packages\\microsoft.powerapps.msbuild.pcf\\1.4.4\\microsoft.powerapps.msbuild.pcf.1.4.4.nupkg.sha512",
+    "C:\\Users\\Tdayman\\.nuget\\packages\\microsoft.powerapps.msbuild.solution\\1.4.4\\microsoft.powerapps.msbuild.solution.1.4.4.nupkg.sha512"
+  ],
+  "logs": []
+}
