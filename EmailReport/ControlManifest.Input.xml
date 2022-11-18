@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="daymandynamics" constructor="EmailReport" version="1.0.0" display-name-key="Email Report" description-key="Use this control to send email with a SSRS report attached. Please visit - https://www.daymandynamics.com/pcf-email-report/ for more information." control-type="standard" preview-image="img/preview.png">
+  <control namespace="daymandynamics" constructor="EmailReport" version="1.0.6" display-name-key="Email Report" description-key="Use this control to send email with a SSRS report attached. Please visit - https://www.daymandynamics.com/pcf-email-report/ for more information." control-type="standard" preview-image="img/preview.png">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="subject" display-name-key="Subject" description-key="This determines what is populated in the subject field when the email record is created." of-type="SingleLine.Text" usage="input" required="false" />
