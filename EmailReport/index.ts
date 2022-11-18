@@ -125,7 +125,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			this.runReport(this);
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
@@ -145,6 +145,22 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 		});
 	}
 
+	private GetEntityPluralName = async (entityName: string): Promise <any> => {
+        let entityplural;
+		
+		await this._context.utils.getEntityMetadata(entityName)
+		.then(			
+			(result) => {
+				entityplural = result.EntitySetName;
+		},
+		(err) => {
+			this.showFailureAlert(err, this);
+			entityplural = err;
+		});
+
+		return entityplural;
+	}
+
 	private runReport(context: any): void {
 		const promise = new Promise((resolve, reject) => {
 			this.executeReport();
@@ -161,7 +177,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			this.getReportingSession(this);
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
@@ -204,7 +220,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			});
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
@@ -231,35 +247,56 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			retrieveEntityReq.send();
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
-	private createEmail(data: any, Object: this) {
+	private async createEmail(data: any, Object: this) {
 		try {
 			var recordId = (this._context.mode as any).contextInfo.entityId;
 			recordId = recordId.replace('{', '').replace('}', '');
 
 			let entity: any = {};
 
-			entity["subject"] = this._context.parameters.subject.raw;
-			entity["description"] = this._context.parameters.description.raw;
-			entity["regardingobjectid_" + this._context.parameters.RegardingObjectEntityName.raw + "@odata.bind"] = "/" + this._context.parameters.RegardingObjectEntityName.raw + "s(" + this._context.parameters.RegardingObjectId.raw + ")";
+			if(this._context.parameters.subject.raw !== null)
+			{
+				entity["subject"] = this._context.parameters.subject.raw;
+			}
+
+			if(this._context.parameters.description.raw !== null)
+			{
+				entity["description"] = this._context.parameters.description.raw;
+			}
+
+			if(this._context.parameters.RegardingObjectEntityName.raw !== null || this._context.parameters.RegardingObjectId.raw)
+			{
+				entity["regardingobjectid_" + this._context.parameters.RegardingObjectEntityName.raw + "@odata.bind"] = "/" + await this.GetEntityPluralName(this._context.parameters.RegardingObjectEntityName.raw!) + "(" + this._context.parameters.RegardingObjectId.raw + ")";
+			}
 
 			let activityparties = [];
 
 			let from: any = {};
-			from["partyid_systemuser@odata.bind"] = "/" + this._context.parameters.FromEntityType.raw + "s(" + this._context.parameters.From.raw + ")";
-			from["participationtypemask"] = 1;
+			if(this._context.parameters.From.raw !== null)
+			{
+				from["partyid_systemuser@odata.bind"] = "/" + this._context.parameters.FromEntityType.raw + "s(" + this._context.parameters.From.raw + ")";
+				from["participationtypemask"] = 1;
+				activityparties.push(from);
+			}
 
 			let to: any = {};
-			to["partyid_contact@odata.bind"] = "/" + this._context.parameters.ToEntityType.raw + "s(" + this._context.parameters.To.raw + ")";
-			to["participationtypemask"] = 2;
+			if(this._context.parameters.To.raw !== null)
+			{
+				to["partyid_contact@odata.bind"] = "/" + this._context.parameters.ToEntityType.raw + "s(" + this._context.parameters.To.raw + ")";
+				to["participationtypemask"] = 2;
+				activityparties.push(to);
+			}
 
-			activityparties.push(to);
-			activityparties.push(from);
-
-			entity["email_activity_parties"] = activityparties;
+			//activityparties.push(to);
+			//activityparties.push(from);
+			if(activityparties.length != 0)
+			{
+				entity["email_activity_parties"] = activityparties;
+			}
 
 			this._context.webAPI.createRecord("email", entity).then(
 				(result) => {
@@ -272,7 +309,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			);
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
@@ -306,7 +343,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			);
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
@@ -326,7 +363,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 				});
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
@@ -361,7 +398,7 @@ export class EmailReport implements ComponentFramework.StandardControl<IInputs, 
 			request.send(JSON.stringify(parameters));
 		}
 		catch (err) {
-			this.showFailureAlert(err, this);
+			this.showFailureAlert(err as any, this);
 		}
 	}
 
